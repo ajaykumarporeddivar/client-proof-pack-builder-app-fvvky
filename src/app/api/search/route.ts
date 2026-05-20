@@ -25,11 +25,12 @@ export async function GET(request: NextRequest): Promise<Response> {
   const lowerCaseQuery = query.toLowerCase()
   let results: SearchResultItem[] = []
 
-  const tagItems = <T extends { id: string }>(
+  function tagItems<T extends { id: string }, K extends SearchResultItem['__type']>(
     arr: T[],
-    type: SearchResultItem['__type'],
-  ): (T & { __type: SearchResultItem['__type'] })[] =>
-    arr.map((item) => ({ ...item, __type: type }))
+    type: K,
+  ): (T & { __type: K })[] {
+    return arr.map((item) => ({ ...item, __type: type }))
+  }
 
   if (!query) {
     // If query is empty, return the first 5 items from a combined set

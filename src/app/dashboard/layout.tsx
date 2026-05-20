@@ -15,7 +15,7 @@ export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode
-}): JSX.Element {
+}): React.JSX.Element {
   const navItems: NavItem[] = [
     { icon: <PlusCircle size={16} />, label: 'New Proof Pack', href: '/dashboard/proof-pack-intake' },
     { icon: <LayoutDashboard size={16} />, label: 'Dashboard', href: '/dashboard/dashboard' },

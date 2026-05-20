@@ -39,7 +39,7 @@ export function Button({
   className,
   href,
   ...props
-}: ButtonProps): JSX.Element {
+}: ButtonProps): React.JSX.Element {
   const baseClasses =
     'inline-flex items-center justify-center font-medium rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-zinc-400 disabled:opacity-50 disabled:pointer-events-none'
 
@@ -74,7 +74,7 @@ export function Button({
 
   if (href) {
     return (
-      <Link href={href} className={classes} {...props}>
+      <Link href={href} className={classes}>
         {content}
       </Link>
     )
@@ -98,7 +98,7 @@ export function Card({
 }: {
   className?: string
   children: React.ReactNode
-}): JSX.Element {
+}): React.JSX.Element {
   return (
     <div
       className={cn(
@@ -117,7 +117,7 @@ export function CardHeader({
 }: {
   className?: string
   children: React.ReactNode
-}): JSX.Element {
+}): React.JSX.Element {
   return <div className={cn('flex flex-col space-y-1.5 p-6', className)}>{children}</div>
 }
 
@@ -127,7 +127,7 @@ export function CardTitle({
 }: {
   className?: string
   children: React.ReactNode
-}): JSX.Element {
+}): React.JSX.Element {
   return (
     <h3
       className={cn(
@@ -146,7 +146,7 @@ export function CardContent({
 }: {
   className?: string
   children: React.ReactNode
-}): JSX.Element {
+}): React.JSX.Element {
   return <div className={cn('p-6 pt-0', className)}>{children}</div>
 }
 
@@ -156,7 +156,7 @@ export function Badge({
 }: {
   children: React.ReactNode
   variant?: 'default' | 'success' | 'warning' | 'error' | 'info' | 'purple'
-}): JSX.Element {
+}): React.JSX.Element {
   const variantClasses = {
     default: 'bg-zinc-100 text-zinc-800',
     success: 'bg-emerald-50 text-emerald-700 border border-emerald-200',
@@ -191,7 +191,7 @@ export function Input({
   id,
   type = 'text',
   ...props
-}: InputProps): JSX.Element {
+}: InputProps): React.JSX.Element {
   const inputId = id || React.useId()
   return (
     <div className={cn('flex flex-col space-y-1', className)}>
@@ -222,7 +222,7 @@ export function Input({
   )
 }
 
-export function Spinner({ className }: { className?: string }): JSX.Element {
+export function Spinner({ className }: { className?: string }): React.JSX.Element {
   return (
     <Loader2
       className={cn('h-5 w-5 animate-spin text-zinc-500', className)}
@@ -239,7 +239,7 @@ export function Avatar({
   name: string
   size?: 'xs' | 'sm' | 'md' | 'lg'
   className?: string
-}): JSX.Element {
+}): React.JSX.Element {
   const initials = name
     .split(' ')
     .map((n) => n[0])
@@ -295,7 +295,7 @@ export function StatCard({
   changeType = 'neutral',
   icon,
   sparkline,
-}: StatCardProps): JSX.Element {
+}: StatCardProps): React.JSX.Element {
   const changeClasses = {
     up: 'text-emerald-600',
     down: 'text-red-500',
@@ -382,7 +382,7 @@ export function Modal({
   title,
   children,
   size = 'md',
-}: ModalProps): JSX.Element | null {
+}: ModalProps): React.JSX.Element | null {
   const modalRef = useRef<HTMLDivElement>(null)
 
   const handleEscape = useCallback(
@@ -451,7 +451,7 @@ export function EmptyState({
   title,
   description,
   action,
-}: EmptyStateProps): JSX.Element {
+}: EmptyStateProps): React.JSX.Element {
   return (
     <div className="flex flex-col items-center justify-center p-8 text-center bg-white border border-dashed border-zinc-200 rounded-xl shadow-sm">
       {Icon && (
@@ -482,7 +482,7 @@ export function Table<T extends { id: string | number }>({
   columns,
   data,
   onRowClick,
-}: TableProps<T>): JSX.Element {
+}: TableProps<T>): React.JSX.Element {
   return (
     <div className="overflow-x-auto rounded-xl border border-zinc-200 shadow-sm">
       <table className="min-w-full divide-y divide-zinc-200 bg-white">
